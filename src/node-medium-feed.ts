@@ -1,6 +1,5 @@
-// Import here Polyfills if needed. Recommended core-js (npm i -D core-js)
-  // import "core-js/fn/array.find"
-  // ...
-export default class DummyClass {
+import LooseObject from './LooseObject' 
 
-}
+// export default class DummyClass {
+
+// }
