@@ -35,6 +35,8 @@ export default class Markup {
         return '*'
       case MarkupType.Anchor:
         return `](${this.href})`
+      default:
+        throw new Error(`Unknown markup type "${this.type}".`)
     }
   }
 }

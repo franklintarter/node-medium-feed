@@ -1,5 +1,5 @@
 import Paragraph, { ParagraphType }  from '../src/Paragraph'
-import { basic, paragraphWithMultipleMarkups, markupParagraphs } from './data/paragraph'
+import { basic, paragraphWithMultipleMarkups, markupParagraphs, createTestP } from './data/paragraph'
 
 describe('Paragraph', () => {
 
@@ -12,6 +12,10 @@ describe('Paragraph', () => {
   it('Has correct paragraph type', () => {
     const p = new Paragraph(basic)
     expect(p.type).toBe(ParagraphType.Standard)
+  })
+
+  it('Throws exception, with unknown type.', () => {
+    expect(() => new Paragraph(createTestP(20, "", ""))).toThrow()
   })
 
 })

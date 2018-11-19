@@ -44,7 +44,7 @@ export const paragraphWithMultipleMarkups = {
   "expectedResult": "\n\n If you’re starting a new business, you might consider using something like [**Stripe *Atlas***](https://stripe.com/atlas) to avoid ***setting*** up a bank account or using government websites to do the legal set up. We decided to go with this option and found it saved us a tremendous amount of time allowing us to preserve our creative, mental energy for the things that truly make our business valuable. It was money well spent."
 }
 
-const createTestP = (type: number, expectedResult: string, paragraphType: string) =>{
+export const createTestP = (type: number, expectedResult: string, paragraphType: string) =>{
   return {
     name: "3387",
     type,
