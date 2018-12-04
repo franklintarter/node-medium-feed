@@ -1,8 +1,8 @@
 import LooseObject from './LooseObject'
 import Markup, { MarkupType } from './Markup'
 
-const MEDIUM_IMG_CDN = "https://cdn-images-1.medium.com";
-const MEDIUM_MEDIA = "https://medium.com/media"
+const MEDIUM_IMG_CDN = 'https://cdn-images-1.medium.com'
+const MEDIUM_MEDIA = 'https://medium.com/media'
 
 export default class Paragraph {
   /**
@@ -11,17 +11,15 @@ export default class Paragraph {
    * @param  {string} publictext
    * @param  {Markup[]} publicmarkups
    */
-  constructor(
-    json: LooseObject
-    ) {
-      this.type = setParagraphType(json.type)
-      this.name = json.name
-      this.markups = json.markups ? json.markups.map((m: LooseObject) => new Markup(m)) : [] // eslint-disable-line
-      this.text = json.text
-      this.metadata = json.metadata
-      this.iframe = json.iframe
-    }
-    
+  constructor(json: LooseObject) {
+    this.type = setParagraphType(json.type)
+    this.name = json.name
+    this.markups = json.markups ? json.markups.map((m: LooseObject) => new Markup(m)) : [] // eslint-disable-line
+    this.text = json.text
+    this.metadata = json.metadata
+    this.iframe = json.iframe
+  }
+
   public iframe: LooseObject
   public metadata: LooseObject
   public name: string
@@ -32,42 +30,44 @@ export default class Paragraph {
     return this.markups.length > 0
   }
 
-  public processParagraph () : string {
+  public processParagraph(): string {
     const markups = createMarkupArray(this.markups)
     let parsedText = this.text
 
-    if(markups.length > 0) {
+    if (markups.length > 0) {
       let previousIndex = 0
       let text = this.text
-      let tokens = [];
-      for(let j = 0; j < markups.length ; j++) {
-        if(markups[j]) {
-          const token = text.substring(previousIndex, j);
-          previousIndex = j;
-          tokens.push(token);
-          tokens.push(markups[j]);
+      let tokens = []
+      for (let j = 0; j < markups.length; j++) {
+        if (markups[j]) {
+          const token = text.substring(previousIndex, j)
+          previousIndex = j
+          tokens.push(token)
+          tokens.push(markups[j])
         }
       }
-      tokens.push(text.substring(markups.length-1));
-      parsedText = tokens.join('');
+      tokens.push(text.substring(markups.length - 1))
+      parsedText = tokens.join('')
     }
 
     return this.addParagraphMarkup(parsedText)
   }
 
-  public addParagraphMarkup (parsedText: string): string {
+  public addParagraphMarkup(parsedText: string): string {
     let text
-    switch(this.type) {
+    switch (this.type) {
       case ParagraphType.Standard:
-        text = `\n ${parsedText}` 
+        text = `\n ${parsedText}`
         break
       case ParagraphType.H1:
-        text = `\n# ${parsedText.replace(/\n/g,'\n# ')}`
+        text = `\n# ${parsedText.replace(/\n/g, '\n# ')}`
         break
       case ParagraphType.ImageAndCaption:
         let imgsrc = MEDIUM_IMG_CDN
-        if(this.metadata.originalHeight) {
-          imgsrc = `${imgsrc}/fit/${this.metadata.originalWidth}/${this.metadata.originalHeight}/${this.metadata.id}`
+        if (this.metadata.originalHeight) {
+          imgsrc = `${imgsrc}/fit/${this.metadata.originalWidth}/${this.metadata.originalHeight}/${
+            this.metadata.id
+          }`
         } else {
           imgsrc = `${imgsrc}/max/${this.metadata.originalWidth}/${this.metadata.id}`
         }
@@ -80,7 +80,7 @@ export default class Paragraph {
         text = `\n> ${parsedText}`
         break
       case ParagraphType.Code:
-        text =  `\`\`\`\n ${parsedText}\`\`\``
+        text = `\`\`\`\n ${parsedText}\`\`\``
         break
       case ParagraphType.UnOrderedList:
         text = `\n* ${parsedText}`
@@ -97,41 +97,36 @@ export default class Paragraph {
       case ParagraphType.SubTitle:
         text = `\n### ${parsedText}`
         break
-      default:
-        throw new Error(`Unknown paragraph type encountered.`)
     }
     return `\n${text}`
   }
 }
 
-function createMarkupArray (markups: Markup[]) : string[] {
+function createMarkupArray(markups: Markup[]): string[] {
   let array: string[] = []
   markups.map(m => {
-    if(array[m.start]) {
+    if (array[m.start]) {
       array[m.start] += m.open
-    }
-    else {
+    } else {
       array[m.start] = m.open
     }
-  
-    if(array[m.end]) {
+
+    if (array[m.end]) {
       if (m.type === MarkupType.Anchor) {
         array[m.end] += array[m.end]
-      }
-      else {
+      } else {
         array[m.end] = m.close + array[m.end]
       }
-    }
-    else {
+    } else {
       array[m.end] = m.close
     }
   })
 
-  return array;
+  return array
 }
 
-function setParagraphType (type: Number) : ParagraphType {
-  switch(type) {
+function setParagraphType(type: Number): ParagraphType {
+  switch (type) {
     case 1:
       return ParagraphType.Standard
     case 2:
