@@ -11,5 +11,4 @@ yarn test:watch
 
 ## TODO
 
-- NPM
 - Exampe Apps

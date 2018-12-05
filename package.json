@@ -1,6 +1,6 @@
 {
   "name": "node-medium-feed",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "keywords": [],
   "main": "dist/node-medium-feed.umd.js",
@@ -12,7 +12,7 @@
   "author": "Franklin Tarter <franklintarter@gmail.com>",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/franklintarter/node-medium-feed"
   },
   "license": "MIT",
   "engines": {
