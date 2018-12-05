@@ -9,6 +9,10 @@ yarn
 yarn test:watch
 ```
 
+## Example App
+
+[CLI](https://github.com/franklintarter/node-medium-feed-cli)
+
 ## TODO
 
-- Exampe Apps
+- Create HTML output of Story
