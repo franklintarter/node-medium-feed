@@ -1,4 +1,4 @@
-import { getStory, getLatest } from '../src'
+import { getStory, getLatest } from '../src/node-medium-feed'
 
 const userId = 'mortar-labs'
 const storyId = 'avoid-spending-time-on-the-stuff-you-dont-care-about-34cac4656761'
