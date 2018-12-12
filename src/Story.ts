@@ -13,6 +13,7 @@ export default class Story {
     this.title = json.title
     this.detectedLanguage = json.detectedLanguage
   }
+
   public id: String
   public title: String
   public detectedLanguage: String
