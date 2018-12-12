@@ -26,9 +26,6 @@ export default class Paragraph {
   public text: string
   public markups: Markup[]
   public type: ParagraphType
-  get hasAnyMarkups(): boolean {
-    return this.markups.length > 0
-  }
 
   public processParagraph(): string {
     const markups = createMarkupArray(this.markups)
