@@ -9,6 +9,14 @@ yarn
 yarn test:watch
 ```
 
+## Deploy
+
+Copy, edit & rename serverless-example.yml as serverless.yml
+
+```bash
+yarn deploy-serverless
+```
+
 ## Example App
 
 [CLI](https://github.com/franklintarter/node-medium-feed-cli)
@@ -17,3 +25,4 @@ yarn test:watch
 
 - Create HTML output of Story
 - Handle an Organization such as @Nodejs
+- GET story Handler gets story given a storyId

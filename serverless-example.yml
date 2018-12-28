@@ -1,0 +1,24 @@
+service: aws-nodejs # Customize
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: us-east-1 # Customize
+# package:
+  include:
+    - './dist/node-medium-feed.es5.js'
+    - './handler.js'
+  exclude:
+    - 'node_modules/**'
+functions:
+  medium-feed-story:
+    handler: handler.story
+    events:
+      - http:
+          path: story
+          method: get
+  medium-feed-latest:
+    handler: handler.latest
+    events:
+      - http:
+          path: latest
+          method: get

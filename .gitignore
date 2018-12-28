@@ -10,3 +10,8 @@ compiled
 .awcache
 .rpt2_cache
 docs
+jspm_packages
+
+# Serverless directories
+.serverless
+serverless.yml
