@@ -23,6 +23,5 @@ yarn deploy-serverless
 
 ## TODO
 
-- Create HTML output of Story
 - Handle an Organization such as @Nodejs
 - GET story Handler gets story given a storyId
