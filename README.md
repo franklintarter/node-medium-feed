@@ -24,7 +24,6 @@ yarn deploy-serverless
 ## TODO
 
 - Handle an Organization such as @Nodejs
-- GET story Handler gets story given a storyId
 
 ## References
 

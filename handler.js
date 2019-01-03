@@ -7,16 +7,18 @@ module.exports.latest = async (event, context) => {
   const latest = await feed.getLatest(publication)
   return {
     statusCode: 200,
-    body: latest
+    isBase64Encoded: false,
+    body: JSON.stringify(latest)
   };
 };
 
 module.exports.story = async (event, context) => {
+  const publication = event.queryStringParameters.publicationName
+  const storyId = event.queryStringParameters.storyId
+  const story = await feed.getStory(publication, storyId)
   return {
     statusCode: 200,
-    body: JSON.stringify({
-      message: 'Go Serverless v1.0! Your function executed successfully!',
-      input: event,
-    }),
+    isBase64Encoded: false,
+    body: JSON.stringify(story)
   };
 }
