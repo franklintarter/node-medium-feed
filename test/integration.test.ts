@@ -10,6 +10,12 @@ describe('Integration Tests', () => {
     expect(story.title).toBe('Avoid Spending Time on the Stuff You Don’t Care About')
   })
 
+  it('Gets author from a Medium Story', async () => {
+    const story = await getStory(userId, storyId)
+
+    expect(story.author.name).not.toBeNull()
+  })
+
   it('Gets the latest', async () => {
     const latest = await getLatest('mortar-labs')
 

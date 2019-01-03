@@ -1,17 +1,23 @@
 import LooseObject from './LooseObject'
 import Paragraph from './Paragraph'
+import Author from './Author'
 
 export default class Story {
   /**
    * @param  {LooseObject} json
    */
   constructor(json: LooseObject) {
-    this.updatedAt = new Date(json.updatedAt)
-    this.createdAt = new Date(json.createdAt)
-    this.content = new Content(json.content.subtitle, json.content.bodyModel.paragraphs)
-    this.id = json.id
-    this.title = json.title
-    this.detectedLanguage = json.detectedLanguage
+    const story = json.value
+    // console.log(story)
+    this.updatedAt = new Date(story.updatedAt)
+    this.createdAt = new Date(story.createdAt)
+    this.content = new Content(story.content.subtitle, story.content.bodyModel.paragraphs)
+    this.id = story.id
+    this.title = story.title
+    this.detectedLanguage = story.detectedLanguage
+
+    const authorJson = json.references.User[Object.keys(json.references.User)[0]]
+    this.author = new Author(authorJson)
   }
 
   public id: String
@@ -20,6 +26,7 @@ export default class Story {
   public updatedAt: Date
   public createdAt: Date
   public content: Content
+  public author: Author
 }
 
 export class Content {
