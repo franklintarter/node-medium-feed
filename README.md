@@ -25,3 +25,7 @@ yarn deploy-serverless
 
 - Handle an Organization such as @Nodejs
 - GET story Handler gets story given a storyId
+
+## References
+
+Project boilerplate provided by [TypeScript Library Starter](https://github.com/alexjoverm/typescript-library-starter)
