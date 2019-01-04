@@ -16,8 +16,14 @@ describe('Integration Tests', () => {
     expect(story.author.name).not.toBeNull()
   })
 
-  it('Gets the latest', async () => {
+  it('Gets the latest for a publication', async () => {
     const latest = await getLatest('mortar-labs')
+
+    expect(latest.posts.length).toBeGreaterThan(1)
+  })
+
+  it('Gets the latest for a user', async () => {
+    const latest = await getLatest('@tarter.ar')
 
     expect(latest.posts.length).toBeGreaterThan(1)
   })

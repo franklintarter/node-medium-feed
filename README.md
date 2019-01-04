@@ -23,8 +23,6 @@ yarn deploy-serverless
 
 ## TODO
 
-- Handle an Organization such as @Nodejs
-
 ## References
 
 Project boilerplate provided by [TypeScript Library Starter](https://github.com/alexjoverm/typescript-library-starter)
