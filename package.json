@@ -1,6 +1,6 @@
 {
   "name": "node-medium-feed",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "keywords": [],
   "main": "dist/node-medium-feed.umd.js",
