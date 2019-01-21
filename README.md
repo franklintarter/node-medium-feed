@@ -4,6 +4,12 @@
 
 ## Quickstart
 
+```bash
+yarn add node-medium-feed
+# or
+npm install node-medium-feed
+```
+
 ```js
 import { getLatest, getStory } from 'node-medium-feed'
 
